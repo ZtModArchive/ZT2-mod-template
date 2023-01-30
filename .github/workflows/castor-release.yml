@@ -20,3 +20,14 @@ jobs:
         file: "**/*.z2f"
         tag: ${{ github.ref }}
         overwrite: true
+    - uses: montudor/action-zip@v1
+      with:
+        args: zip -qq -r zt2Mod.zip **/*.z2f
+    - uses: Zt-freak/OdinPlusModUploader-GitHub-Action/action.yml@main
+      with:
+        nexusmod_mod_id: # your ID here
+        file: zt2Mod
+        version: ${{ github.ref }}
+        nexusmod_api_key: ${{ secrets.NEXUSMOD_API_KEY }}
+        nexusmod_cookie_nexusid: ${{ secrets.NEXUSMOD_COOKIE_NEXUSID  }}
+        nexusmod_cookie_sid_develop: ${{ secrets.NEXUSMOD_COOKIE_SID_DEVELOP  }}
